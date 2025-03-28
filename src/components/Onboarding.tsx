@@ -178,50 +178,65 @@ const Onboarding = ({ onComplete }: OnboardingProps) => {
   ];
 
   // Welcome section
-  if (section === 'welcome') {
+  if (section === "welcome") {
     return (
-      <div className="fixed inset-0 bg-gradient-to-br from-white to-sakura-50 dark:from-gray-900 dark:to-gray-800 flex items-center justify-center z-50">
-        <div className={`w-full min-h-screen md:min-h-0 flex items-center justify-center py-8 px-4`}>
-          <div className={`max-w-3xl w-full mx-auto space-y-8 ${animationClass}`}>
-            <div className="text-center space-y-6">
-              
-              <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white px-4">
+        <div className="fixed inset-0 bg-gradient-to-br from-white to-sakura-50 dark:from-gray-900 dark:to-gray-800 flex items-start justify-center z-50 overflow-y-auto">
+          <div className="w-full max-w-7xl min-h-screen md:min-h-0 px-4 sm:px-6 lg:px-8 py-12 md:py-20 flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-12">
+            <div className="w-full lg:w-1/2 order-1 lg:order-none text-center lg:text-left space-y-4 sm:space-y-6 mt-8 md:mt-0">
+              <div className="flex justify-center lg:justify-start">
+                <div className="relative">
+                  <div className="absolute inset-0 bg-sakura-500 rounded-full blur-xl opacity-20 animate-pulse"></div>
+                  <div className="relative bg-white dark:bg-gray-800 rounded-full p-3 sm:p-4 shadow-xl">
+                    <img
+                        src="/logo.png"
+                        alt="Clara Logo"
+                        className="w-12 h-12 sm:w-16 sm:h-16 object-contain"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 dark:text-white animate-fadeIn leading-tight">
                 Welcome to <span className="text-sakura-500">Clara</span>
               </h1>
-              
-              <p className="text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto px-4">
-                Your privacy-first AI assistant that keeps your data local and your conversations private.
+
+              <p className="text-base sm:text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto lg:mx-0 animate-fadeInUp delay-200 leading-relaxed">
+                Your privacy-first AI assistant that keeps your data local and
+                your conversations private.
               </p>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 px-4">
-              {features.map((feature, idx) => (
-                <div 
-                  key={idx} 
-                  className="bg-white/50 dark:bg-gray-800/50 backdrop-blur-md rounded-xl p-6 shadow-lg border border-gray-100 dark:border-gray-700 hover:border-sakura-200 dark:hover:border-sakura-900 transition-all duration-300 group"
-                >
-                  <div className="p-3 bg-sakura-100 dark:bg-sakura-900/20 rounded-lg w-fit mb-4 transform transition-transform duration-300 group-hover:scale-110">
-                    {feature.icon}
-                  </div>
-                  <h3 className="text-lg font-semibold mb-2 text-gray-900 dark:text-white">{feature.title}</h3>
-                  <p className="text-gray-600 dark:text-gray-400">{feature.description}</p>
-                </div>
-              ))}
+            <div className="w-full lg:w-1/2 max-w-2xl order-2 lg:order-none">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5 md:gap-6 animate-fadeInUp delay-300">
+                {features.map((feature, idx) => (
+                    <div
+                        key={idx}
+                        className="bg-gradient-to-br from-white to-gray-50 dark:from-gray-800 dark:to-gray-850 backdrop-blur-md rounded-xl p-4 sm:p-5 md:p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 dark:border-gray-700 hover:border-sakura-200 dark:hover:border-sakura-900 group"
+                    >
+                      <div className="p-2 sm:p-3 bg-sakura-100 dark:bg-sakura-900/20 rounded-lg w-fit mb-3 sm:mb-4 group-hover:scale-110 transition-transform">
+                        {feature.icon}
+                      </div>
+                      <h3 className="text-base sm:text-lg md:text-xl font-semibold mb-1 sm:mb-2 text-gray-900 dark:text-white">
+                        {feature.title}
+                      </h3>
+                      <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400">
+                        {feature.description}
+                      </p>
+                    </div>
+                ))}
+              </div>
             </div>
 
-            <div className="flex justify-center pt-6 sm:pt-8">
+            <div className="w-full flex justify-center pt-4 sm:pt-8 pb-8 md:pb-0 animate-fadeInUp delay-500 order-3 lg:absolute lg:bottom-8 lg:left-0 lg:right-0">
               <button
-                onClick={() => handleNextSection('features')}
-                className="w-full sm:w-auto px-6 py-3 bg-sakura-500 text-white rounded-full text-lg font-medium 
-                shadow-lg transition-all duration-300 flex items-center justify-center gap-2
-                hover:shadow-[0_0_20px_rgba(244,163,187,0.5)] hover:bg-sakura-400"
+                  onClick={() => handleNextSection("features")}
+                  className="px-5 sm:px-6 md:px-8 py-2 sm:py-2.5 md:py-3 text-sm sm:text-base bg-gradient-to-r from-sakura-400 to-sakura-500 hover:from-sakura-500 hover:to-sakura-600 text-white rounded-full font-medium shadow-lg hover:shadow-xl transition-all duration-300 flex items-center gap-2 hover:gap-3"
               >
-                Discover Clara <Zap className="w-5 h-5" />
+                Discover Clara <Zap className="w-4 h-4 sm:w-5 sm:h-5"/>
               </button>
             </div>
           </div>
         </div>
-      </div>
     );
   }
 
